@@ -1,5 +1,8 @@
 # Internal ID
 
+[![CI](https://github.com/onfranciis/OID/actions/workflows/ci.yml/badge.svg)](https://github.com/onfranciis/OID/actions/workflows/ci.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENCE)
+
 Internal ID is an internal OpenID Connect identity provider built with NestJS,
 TypeORM, PostgreSQL, and Better Auth. It ships with a standalone React admin
 console (in `web/admin/`) served same-origin at `/admin`.
@@ -107,3 +110,18 @@ sample app, required ID token checks, session boundary, and logout behavior.
 
 Admin guidance lives in `docs/ADMIN_GUIDE.md`; the security coverage matrix
 lives in `docs/SECURITY_TEST_MATRIX.md`.
+
+## Contributing
+
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for local
+setup, coding standards, and the pre-PR checklist. Please also read the
+[Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Security
+
+To report a security vulnerability, please see [SECURITY.md](SECURITY.md)
+rather than opening a public issue.
+
+## License
+
+Licensed under the [GNU General Public License v3.0 or later](LICENCE).

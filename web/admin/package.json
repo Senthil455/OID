@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Internal ID admin SPA",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "engines": {
     "node": "22.x"

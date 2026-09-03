@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a problem with the identity provider or admin console
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps to reproduce the behavior.
+      placeholder: |
+        1. Run `docker compose up --build`
+        2. Sign in at /admin/login
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Deployment mode
+      options:
+        - Docker (docker compose up --build)
+        - Local (pnpm start:dev)
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: "22.17.0"
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or errors
+      render: shell
+    validations:
+      required: false

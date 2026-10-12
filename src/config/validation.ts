@@ -107,4 +107,13 @@ function validateProductionEnvironment(env: {
       'BOOTSTRAP_CLIENT_SECRET must not use the sample development default.',
     );
   }
+
+  if (
+    env.bootstrapClientSecret !== undefined &&
+    env.bootstrapClientSecret.length < 32
+  ) {
+    throw new Error(
+      'BOOTSTRAP_CLIENT_SECRET must be at least 32 characters long in production.',
+    );
+  }
 }

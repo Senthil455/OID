@@ -69,8 +69,6 @@ export interface RotateRefreshTokenForClientResult extends IssueRefreshTokenResu
 
 export interface RevokePresentedRefreshTokenInput {
   refreshToken: string;
-  clientIdentifier: string;
-  clientSecret?: string | null;
   reason: string;
   now?: Date;
 }

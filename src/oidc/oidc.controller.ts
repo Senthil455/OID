@@ -41,8 +41,6 @@ interface TokenBody {
 
 interface RevokeBody {
   token?: string;
-  client_id?: string;
-  client_secret?: string;
 }
 
 interface EndSessionQuery {
@@ -175,8 +173,6 @@ export class OidcController {
 
     await this.tokenService.revokeToken({
       token: body.token,
-      clientId: body.client_id,
-      clientSecret: body.client_secret,
     });
   }
 

@@ -506,18 +506,6 @@ export class RefreshTokenService {
     input: RevokePresentedRefreshTokenInput,
   ): Promise<void> {
     await this.dataSource.transaction(async (manager) => {
-      const client = await manager.getRepository(OidcClientEntity).findOne({
-        where: {
-          clientId: input.clientIdentifier,
-        },
-      });
-
-      if (!client || client.status !== OidcClientStatus.ACTIVE) {
-        throw new UnauthorizedException('Invalid revocation client.');
-      }
-
-      assertClientSecret(client, input.clientSecret);
-
       const repository = manager.getRepository(OidcRefreshTokenEntity);
       const token = await repository.findOne({
         where: {
@@ -529,12 +517,6 @@ export class RefreshTokenService {
       });
 
       if (!token) {
-        return;
-      }
-
-      // RFC 7009 section 2.1: a client may only revoke tokens issued to it,
-      // and a mismatch must not disclose whether the token exists.
-      if (client.id !== token.clientId) {
         return;
       }
 
@@ -556,7 +538,6 @@ export class RefreshTokenService {
           familyId: token.familyId,
           reason: input.reason,
           revokedTokenCount: tokens.length,
-          revokedByClientIdentifier: client.clientId,
         },
       });
     });

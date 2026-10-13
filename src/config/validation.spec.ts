@@ -55,6 +55,13 @@ describe('validateEnvironment', () => {
       validateEnvironment({
         ...baseConfig,
         BOOTSTRAP_CLIENT_SECRET:
+          'replace-this-sample-client-secret-with-32-plus-chars',
+      }),
+    ).toThrow(/sample development default/);
+    expect(() =>
+      validateEnvironment({
+        ...baseConfig,
+        BOOTSTRAP_CLIENT_SECRET:
           'a-long-enough-bootstrap-client-secret-value',
       }),
     ).not.toThrow();

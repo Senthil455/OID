@@ -63,6 +63,8 @@ export interface UserInfoInput {
 
 export interface RevokeTokenInput {
   token?: string;
+  clientId?: string;
+  clientSecret?: string;
   now?: Date;
 }
 
@@ -284,9 +286,12 @@ export class OidcTokenService {
 
   async revokeToken(input: RevokeTokenInput): Promise<void> {
     const token = normalizeRequired(input.token, 'token');
+    const clientIdentifier = normalizeRequired(input.clientId, 'client_id');
 
     await this.refreshTokenService.revokePresentedToken({
       refreshToken: token,
+      clientIdentifier,
+      clientSecret: input.clientSecret,
       reason: 'client_revocation',
       now: input.now,
     });

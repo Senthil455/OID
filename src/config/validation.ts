@@ -102,7 +102,11 @@ function validateProductionEnvironment(env: {
     );
   }
 
-  if (env.bootstrapClientSecret === 'replace-this-sample-client-secret') {
+  if (
+    env.bootstrapClientSecret === 'replace-this-sample-client-secret' ||
+    env.bootstrapClientSecret ===
+      'replace-this-sample-client-secret-with-32-plus-chars'
+  ) {
     throw new Error(
       'BOOTSTRAP_CLIENT_SECRET must not use the sample development default.',
     );
